@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AgentExtraction": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Endava\\EndevLocal\\Dev\\agent-extraction-v2\\samples\\s1_preparation_input.pdf"
+    }
+  }
+}

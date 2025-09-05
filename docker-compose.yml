@@ -1,0 +1,22 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: agent-extraction-rabbitmq
+    ports:
+      - "5672:5672"   # RabbitMQ standard port
+      - "15672:15672" # Management UI port
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=adminpassword
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  rabbitmq_data:
+    driver: local
